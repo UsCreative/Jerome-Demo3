@@ -2199,6 +2199,11 @@ addEventListener('load',fit);(document.fonts&&document.fonts.ready||Promise.reso
 #jhaf-guide .q:hover{background:#f2f2f2;border-left-color:#000}
 #jhaf-guide .q + .q{border-top:1px solid #d4d4d4}
 #jhaf-guide .ask-sub{margin:4px 0 0;color:#4a4a4a}
+#jhaf-guide #jg-step2 h4{counter-reset:q}
+#jhaf-guide #jg-step2 .q{counter-increment:q}
+#jhaf-guide #jg-step2 .q p.ask{font-size:17px!important;line-height:1.4}
+#jhaf-guide #jg-step2 .q > div:first-child{position:relative;padding-left:46px}
+#jhaf-guide #jg-step2 .q > div:first-child::before{content:counter(q);position:absolute;left:0;top:-1px;width:30px;height:30px;border:1.5px solid #ea0546;border-radius:50%;color:#ea0546;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;box-sizing:border-box}
 #jhaf-guide .wb-row .when .wd{display:block;font-size:14px;line-height:1.2}
 #jhaf-guide a .ext{margin-left:10px;vertical-align:-2px}
 #jhaf-guide .faq-print-note{display:none}

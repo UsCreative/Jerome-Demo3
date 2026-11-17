@@ -1627,9 +1627,7 @@ footer h2{font-size:32px;text-transform:uppercase;font-weight:700;letter-spacing
     else if(today<=LAST){html='<span class="lab">Applications are closed</span>Review is under way. Staff notify all applicants by Friday, December 18, 2027.';}
     else if(today<"2028-02-01"){html='<span class="lab">Applications are closed</span>All applicants have been notified. Fellows are announced in February 2028.';}
     else{html='<span class="lab">Applications are closed</span>The 2028-2031 Fellows have been announced.';}
-    var nx=null;[].slice.call(root.querySelectorAll(".kd-ev[data-start][data-end]")).forEach(function(li){
-      if(nx||!(li.querySelector(".tag.d")||li.dataset.key))return;var a=li.dataset.end;
-      if(a>today||(a===today&&!afterCutoff))nx={d:a,k:!!li.dataset.key,t:(li.dataset.key||li.dataset.cd||li.querySelector(".kd-t").textContent)};});
+    var KEYS=[{d:"2027-01-28",t:"Step 1 applications due",k:false},{d:"2027-04-07",t:"Step 2 applications due",k:false},{d:"2027-08-28",t:"Finalists notified",k:true},{d:"2027-12-18",t:"Notification of application status",k:true}];var nx=null;KEYS.forEach(function(x){if(nx)return;if(x.d>today||(x.d===today&&!(afterCutoff&&!x.k)))nx=x;});
     if(!nx){el.hidden=false;el.innerHTML='<div class="big">&#10003;</div><p><span class="lab">Notification of application status</span>All applicants were notified by December 18, 2027.</p>';}
     else{el.hidden=false;var nn=dayDiff(today,nx.d),wd=new Date(nx.d+"T12:00:00Z").toLocaleDateString("en-US",{weekday:"long",timeZone:"UTC"});
       if(nn===0){el.innerHTML='<div class="big">Today</div>'+(nx.k?'<p><span class="lab">Today</span>'+nx.t+'.</p>':'<p><span class="lab dl">Deadline</span>'+nx.t+' today, before 2:59 pm Central / 3:59 pm Eastern.</p>');}
